@@ -112,4 +112,4 @@ list(permutations(max_numbers,[],0))
 # max_arr = [i for i in range(9, 9-N-1, -1)]
 # #print(min_numbers, max_numbers)
 # b_permutation(N)
-#inequality_min(0, [])
+
