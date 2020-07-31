@@ -1,30 +1,5 @@
-# def inequality_min(idx, a):
-#     if len(a) == N + 1:
-#         print(a)
-#         return
-#     if idx + 1 > len(min_numbers):
-#         return
-#     inequality_min(idx + 1, a + [min_numbers[idx]])
-#     inequality_min(idx + 1, a)
+''' 내가 짠 코드,, 시간 초과 떠서 실패
 
-
-# def b_permutation(n):
-#     idx = -1
-#     for i in range(n,0,-1):
-#         if max_arr[i-1]>max_arr[i]:
-#             idx = i
-#             break
-#     if idx == -1:
-#         print(idx)
-#         return
-#     else :
-#         for i in max_numbers:
-#             #print(i)
-#             if i not in max_arr and max_arr[idx]>i:
-#                 max_arr[idx]=i
-#                 break
-#     print(max_arr)
-#     b_permutation(n)
 import sys
 
 
@@ -70,46 +45,37 @@ max_numbers = [i for i in range(9, -1, -1)]
 list(permutations(min_numbers,[],0))
 c=False
 list(permutations(max_numbers,[],0))
-# for i in list(permutations(min_numbers,[],0)):
-#     check=True
-#     for idx,val in enumerate(a):
-#         if val=="<":
-#             if i[idx]<i[idx+1]:
-#                 continue
-#             else:
-#                 check=False
-#                 break
-#         else :
-#             if i[idx]>i[idx+1]:
-#                 continue
-#             else:
-#                 check = False
-#                 break
-#     if check:
-#         print(''.join(list(map(str,i))))
-#         break
+'''
+### 성공 코드 ,, 코드 분석 하고 공부해야함..
 
-# for i in list(permutations(max_numbers,[],0)):
-#     check=True
-#     for idx,val in enumerate(a):
-#         if val=="<":
-#             if i[idx]<i[idx+1]:
-#                 continue
-#             else:
-#                 check=False
-#                 break
-#         else :
-#             if i[idx]>i[idx+1]:
-#                 continue
-#             else:
-#                 check = False
-#                 break
-#     if check:
-#         print(''.join(list(map(str,i))))
-#         break
 
-# min_arr = [i for i in range(0, N+1)]
-# max_arr = [i for i in range(9, 9-N-1, -1)]
-# #print(min_numbers, max_numbers)
-# b_permutation(N)
+n = int(input())
+op = input().split()
+c = [False]*10
+mx, mn = "", ""
+
+def possible(i, j, k):
+    if k == '<':
+        return i < j
+    if k == '>':
+        return i > j
+    return True
+
+def solve(cnt, s):
+    global mx, mn
+    if cnt == n+1:
+        if not len(mn):
+            mn = s
+        else:
+            mx = s
+        return
+    for i in range(10):
+        if not c[i]:
+            if cnt == 0 or possible(s[-1], str(i), op[cnt-1]):
+                c[i] = True
+                solve(cnt+1, s+str(i))
+                c[i] = False
+
+solve(0, "")
+print("%s\n%s" % (mx, mn))
 
