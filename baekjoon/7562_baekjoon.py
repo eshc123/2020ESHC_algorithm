@@ -19,7 +19,6 @@ def bfs(start):
                     queue.append([x,y])
 
 
-
 dx,dy=[-2,-2,-1,-1,1,1,2,2],[1,-1,2,-2,2,-2,1,-1]
 T = int(input())
 for i in range(T):
