@@ -1,32 +1,35 @@
-def pmt(n,idx,a):
-    if len(a)== n//2:
-        print(a)
-        return
-    if idx >= n:
-        return
-    pmt(n,idx+1,a+[numbers[idx]])
-    pmt(n, idx + 1, a )
+#비트마스크 이용
+
+def sub(arr1,arr2):
+    s1 , s2 = 0,0
+    for i in arr1:
+        for j in arr1:
+            if i==j:
+                continue
+            s1+=arr[i][j]
+    for i in arr2:
+        for j in arr2:
+            if i==j:
+                continue
+            s2+=arr[i][j]
+    return abs(s1-s2)
 
 
-N = int(input())
-a = [list(map(int, input().split())) for i in range(N)]
-numbers = [i for i in range(N)]
-links = []
-starts = []
-pmt(N,0,[])
+T = int(input())
+arr = [list(map(int,input().split())) for i in range(T)]
+m = 10 ** 8
+for i in range(1, (1<<T)//2):
 
-# for i in range(1,2**(N//2) ):
-#     link=[]
-#     start=[]
-#     temp = (i << (N//2) ) | (2**(N//2)-1 - i)
-#     print(bin(temp))
-#     for j in range(N):
-#         if ~temp & (1<<j) :
-#             print(j,~temp & (1<<j))
-#             link.append(j)
-#         else:
-#             start.append(j)
-#     links.append(link)
-#     starts.append(start)
+    start = []
+    link = []
+    for j in range(T):
+        if i & (1<<j):
+            start.append(j)
+        else:
+            link.append(j)
 
-print(links,starts)
+    if len(start) == len(link):
+        t = sub(start, link)
+        if m > t:
+            m = t
+print(m)

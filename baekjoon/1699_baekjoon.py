@@ -10,3 +10,4 @@ for j in range(2,N+1):
         d[j]+=d[(int(i**(0.5)))**2]
         i=i-(int(i**(0.5)))**2
 print(d[N])
+
