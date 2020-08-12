@@ -1,39 +1,29 @@
-def check3by3(x,y,arr1,arr2):
-    cnt = 0
-    for i in range(x,x+3):
-        for j in range(y,y+3):
-            if arr1[i][j] != arr2[i][j]:
-                cnt+=1
-    return cnt
+def change(x,y,arr1,dx,dy):
+    for i in range(x,x+dx):
+        for j in range(y,y+dy):
+            if arr1[i][j] == "0":
+                arr1[i][j]="1"
+            else :
+                arr1[i][j] = "0"
+    return
 
 
 N ,M = map(int,input().split())
-before_arr, after_arr = [], []
-for i in range(N):
-    a=list(map(str,input()))
-    before_arr.append(a)
-for i in range(N):
-    a=list(map(str,input()))
-    after_arr.append(a)
+before_arr, after_arr = [list(map(str,input())) for i in range(N)], [list(map(str,input())) for i in range(N)]
 cn = 0
-while True:
-    if before_arr == after_arr:
-        break
-    m = 0
-    cp = [0,0]
+if N>=3 and M >=3:
     for i in range(N):
+        if i >= N-2 :
+            break
         for j in range(M):
-            if i+3<=N and j+3<=M:
-                c = check3by3(i,j,before_arr,after_arr)
-                if m <= c:
-                    m=c
-                    cp[0]=i
-                    cp[1]=j
-    for i in range(cp[0],cp[0]+3):
-        for j in range(cp[1],cp[1]+3):
-            if before_arr[i][j]=="0":
-                before_arr[i][j]='1'
-            else :
-                before_arr[i][j]='0'
-    cn+=1
-print(cn)
+            if j >= M-2:
+                break
+            if before_arr[i][j]!=after_arr[i][j]:
+                change(i,j,before_arr,3,3)
+                cn+=1
+
+
+if before_arr == after_arr:
+    print(cn)
+else:
+    print(-1)
