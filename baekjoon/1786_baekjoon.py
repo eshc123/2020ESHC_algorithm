@@ -1,3 +1,4 @@
+#KMP 알고리즘.. 온라인 코테 때 나오면 기억하고 써먹자
 import sys
 
 T = sys.stdin.readline().rstrip()
