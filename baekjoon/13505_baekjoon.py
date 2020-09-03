@@ -9,7 +9,6 @@ def str_xor():
             return numbers
     return numbers
 
-
 N = int(sys.stdin.readline())
 arr = set(map(int,sys.stdin.readline().split()))
 index = len(bin(max(arr))) - 3
