@@ -1,3 +1,5 @@
+# 투포인터 중요한듯!!
+
 import sys
 
 N, S = map(int,sys.stdin.readline().split())
